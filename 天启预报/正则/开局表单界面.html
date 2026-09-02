@@ -1,0 +1,476 @@
+```html
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+#tq-open{font:14px/1.7 "Microsoft YaHei",sans-serif;color:#d7e0dd;background:#0f191c;border:1px solid rgba(215,224,221,.16);border-radius:14px;padding:16px;max-width:100%;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.tq-cover{text-align:center;padding:26px 8px}
+.tq-cover-ring{width:56px;height:56px;margin:0 auto 12px;border-radius:14px;background:linear-gradient(135deg,#2f6b62,#3f8a7d);display:flex;align-items:center;justify-content:center;color:#e7f5f1;font-weight:800;font-size:24px;box-shadow:0 4px 16px rgba(63,138,125,.35)}
+.tq-cover h1{font-size:24px;color:#e7f0ed;margin:0 0 6px;letter-spacing:.08em}
+.tq-cover .sub{color:#7bc0a8;margin:0 0 10px;letter-spacing:.2em;font-size:13px}
+.tq-cover .lead{color:#a8b8b3;margin:0 auto 18px;max-width:30em;font-size:13px}
+.tq-sec{margin:14px 0;padding:12px 14px;background:rgba(20,36,42,.7);border:1px solid rgba(215,224,221,.08);border-left:3px solid #3f6b62;border-radius:10px}
+.tq-sec h2{font-size:15px;color:#a8d3c9;margin:0 0 8px;letter-spacing:1px}
+.tq-sec label{display:block;margin:8px 0;color:#a8b8b3;font-size:13px}
+.tq-sec input,.tq-sec select,.tq-sec textarea{width:100%;box-sizing:border-box;background:#1a2426;border:1px solid rgba(215,224,221,.25);color:#e7f0ed;border-radius:8px;padding:8px 10px;font:inherit;margin-top:4px;transition:border-color .2s}
+.tq-sec input:focus,.tq-sec select:focus,.tq-sec textarea:focus{border-color:#7bc0a8;outline:none}
+.tq-sec textarea{resize:vertical}
+.hint{color:#7d8d88;font-size:12px;margin:8px 0 0}
+.tq-btn{display:inline-block;padding:10px 26px;border:0;border-radius:10px;cursor:pointer;font:inherit;font-weight:700;letter-spacing:1px;transition:all .2s}
+.tq-btn.primary{background:linear-gradient(135deg,#2f6b62,#3f8a7d);color:#eaf4f0;width:100%}
+.tq-btn.primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.tq-msg{margin:10px 0 0;color:#7bc0a8;font-size:13px}
+.tq-pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 0 4px}
+.tq-btn.nav{background:#1a2629;border:1px solid rgba(215,224,221,.2);color:#a8d3c9;padding:8px 16px;font-size:13px;flex:0 0 auto}
+.tq-btn.nav:disabled{opacity:.4;cursor:not-allowed}
+.tq-pageinfo{color:#7bc0a8;font-size:12px;letter-spacing:.1em}
+@media (max-width:480px){
+  #tq-open{padding:10px;border-radius:10px}
+  .tq-cover{padding:16px 4px}
+  .tq-cover-ring{width:46px;height:46px;font-size:20px}
+  .tq-cover h1{font-size:20px}
+  .tq-cover .lead{font-size:12px}
+  .tq-sec{margin:10px 0;padding:10px 11px}
+  .tq-sec h2{font-size:14px}
+  .tq-sec label{font-size:12px}
+  .tq-sec input,.tq-sec select,.tq-sec textarea{padding:7px 8px;font-size:13px}
+  .hint{font-size:11px}
+  .tq-pager{gap:6px}
+  .tq-btn.nav{padding:7px 10px;font-size:12px}
+  .tq-pageinfo{font-size:11px}
+}
+</style>
+</head>
+<body>
+<div id="tq-open">
+  <div class="tq-cover">
+    <div class="tq-cover-ring"><span>启</span></div>
+    <h1>《天启预报》· 入世卷</h1>
+    <p class="sub">角色建档 · 从"你是谁"开始</p>
+    <p class="lead">现境之下，超凡暗流涌动。写下你的姓名、身份与力量，世界会记住你。</p>
+    <button class="tq-btn primary" id="tq-start-btn" type="button">展开档案 →</button>
+  </div>
+
+  <div id="tq-form" style="display:none">
+    <div class="tq-sec">
+      <h2>壹 · 落点</h2>
+      <label>开局时间
+        <input id="f-date" placeholder="如：2110年7月1日">
+        <select id="f-date-sel">
+          <option value="">（手填，或选剧情节点）</option>
+          <option value="2110年前夜">2110 年前夜（命运之书觉醒前）</option>
+          <optgroup label="第一部 · 现境新生（2110年7月-12月）">
+            <option value="2110年7月1日">第1幕 · 捡盒入局（2110年7月1日）</option>
+            <option value="2110年7月4日">第2幕 · 老塘镇封锁与降诞（2110年7月4日）</option>
+            <option value="2110年7月9日">第3幕 · 圈禁之手觉醒（2110年7月9日）</option>
+            <option value="2110年7月14日">第4幕 · 码头焚杀红手套（2110年7月14日）</option>
+            <option value="2110年8月1日">第5幕 · 老杨火化与暗网悬赏（2110年8月1日）</option>
+            <option value="2110年9月1日">第6幕 · 开学与炸弹快递（2110年9月1日）</option>
+            <option value="2110年9月4日">第7幕 · 围剿啼蛇（2110年9月4日）</option>
+            <option value="2110年9月10日">第8幕 · 高架复仇杀戚问（2110年9月10日）</option>
+            <option value="2110年9月13日">第9幕 · 九凤迦楼罗之乱（2110年9月13日）</option>
+            <option value="2110年9月18日">第10幕 · 万丽金库劫案（2110年9月18日）</option>
+            <option value="2110年9月22日">第11幕 · 炼金之火觉醒（2110年9月22日）</option>
+            <option value="2110年10月2日">第12幕 · 五月花号桌游（2110年10月2日）</option>
+            <option value="2110年10月5日">第13幕 · 厨魔大赛（2110年10月5日）</option>
+            <option value="2110年10月8日">第14幕 · 进阶山鬼（2110年10月8日）</option>
+            <option value="2110年10月11日">第15幕 · 金陵直播反杀（2110年10月11日）</option>
+            <option value="2110年10月14日">第16幕 · 培训班与ABRS考级（2110年10月14日）</option>
+            <option value="2110年10月19日">第17幕 · 新秀赛初赛（2110年10月19日）</option>
+            <option value="2110年10月23日">第18幕 · 新秀赛终局决战（2110年10月23日）</option>
+            <option value="2110年10月24日">第19幕 · 新秀赛落幕颁奖（2110年10月24日）</option>
+            <option value="2110年10月26日">第20幕 · 阴家寿宴弑祖（2110年10月26日）</option>
+            <option value="2110年10月27日">第21幕 · 四亿悬赏大逃亡（2110年10月27日）</option>
+            <option value="2110年10月29日">第22幕 · 艾晴判刑与接任（2110年10月29日）</option>
+            <option value="2110年10月31日">第23幕 · 魔女之夜开启（2110年10月31日）</option>
+            <option value="2110年10月31日">第24幕 · 永世之战（2110年10月31日）</option>
+            <option value="2110年11月1日">第25幕 · 受膏者回归（2110年11月1日）</option>
+            <option value="2110年11月2日">第26幕 · 丁南柯案黑吃黑（2110年11月2日）</option>
+            <option value="2110年11月3日">第27幕 · 石城候车室（2110年11月3日）</option>
+            <option value="2110年11月4日">第28幕 · 群星号登车入梦（2110年11月4日）</option>
+            <option value="2110年11月6日">第29幕 · 清剿良宵会（2110年11月6日）</option>
+            <option value="2110年11月7日">第30幕 · 群星号大决战（2110年11月7日）</option>
+            <option value="2110年11月9日">第31幕 · 现境穷游旅行（2110年11月9日）</option>
+            <option value="2110年11月25日">第32幕 · 南极试炼（2110年11月25日）</option>
+            <option value="2110年11月28日">第33幕 · 舆岱山取材（2110年11月28日）</option>
+            <option value="2110年12月6日">第34幕 · 至暗之日（2110年12月6日）</option>
+            <option value="2110年12月31日">第35幕 · 元旦前夕回顾（2110年12月31日）</option>
+          </optgroup>
+          <optgroup label="第二部 · 象牙之塔与丹波（2111年6月-2112年11月）">
+            <option value="2111年6月7日">第36幕 · 高考与苦修（2111年6月7日）</option>
+            <option value="约2111年6月下旬">第37幕 · 毕业证风波（约2111年6月下旬）</option>
+            <option value="2111年8月31日">第38幕 · 入象牙之塔（2111年8月31日）</option>
+            <option value="约2111年9月2日">第39幕 · 捧杀与反击（约2111年9月2日）</option>
+            <option value="约2111年9月中旬">第40幕 · 罗素收徒（约2111年9月中旬）</option>
+            <option value="约2111年9月下旬">第41幕 · 出差黄昏之乡（约2111年9月下旬）</option>
+            <option value="约2111年9月下旬">第42幕 · 收编地狱大群（约2111年9月下旬）</option>
+            <option value="约2111年9月下旬">第43幕 · 争夺分控中枢（约2111年9月下旬）</option>
+            <option value="约2111年10月初">第44幕 · 斩万变者越狱（约2111年10月初）</option>
+            <option value="约2111年10月上旬">第45幕 · 灭绝永冻炉心（约2111年10月上旬）</option>
+            <option value="约2111年10月上旬">第46幕 · 铸刀怨憎（约2111年10月上旬）</option>
+            <option value="约2111年10月下旬">第47幕 · 厨魔指定赴瀛洲（约2111年10月下旬）</option>
+            <option value="约2111年11月初">第48幕 · 真希参选（约2111年11月初）</option>
+            <option value="约2111年11月初">第49幕 · 厨魔试合连胜（约2111年11月初）</option>
+            <option value="约2111年11月上旬">第50幕 · 八房逆转（约2111年11月上旬）</option>
+            <option value="约2111年11月4日">第51幕 · 里见家终局八房了断（约2111年11月4日）</option>
+            <option value="约2111年11月10日">第52幕 · 御前厨魔试合（约2111年11月10日）</option>
+            <option value="约2111年11月15日">第53幕 · 绿日卧底潜入丹波（约2111年11月15日）</option>
+            <option value="约2111年11月23日">第54幕 · 投名状怀纸组崛起（约2111年11月23日）</option>
+            <option value="约2111年12月1日">第55幕 · 丹波经营五大佬博弈（约2111年12月1日）</option>
+            <option value="约2111年12月11日">第56幕 · 混种同盟盟会（约2111年12月11日）</option>
+            <option value="约2111年12月19日">第57幕 · 被捕交易绿日头目（约2111年12月19日）</option>
+            <option value="约2111年12月28日">第58幕 · 觐见将军总无事令（约2111年12月28日）</option>
+            <option value="约2112年1月9日">第59幕 · 柳东黎复仇牛岛殉死（约2112年1月9日）</option>
+            <option value="约2112年1月19日">第60幕 · 丹波内圈开战（约2112年1月19日）</option>
+            <option value="约2112年1月27日">第61幕 · 大司命救赎丹波之王（约2112年1月27日）</option>
+            <option value="约2112年6月">第62幕 · 丹波转型罗老极意（约2112年6月）</option>
+            <option value="约2112年8月">第63幕 · 刀狩剑圣托孤（约2112年8月）</option>
+            <option value="约2112年9月">第64幕 · 罗老诀别柳东黎手术（约2112年9月）</option>
+            <option value="约2112年10月">第65幕 · 赫利俄斯登船（约2112年10月）</option>
+            <option value="约2112年11月初">第66幕 · 赫利俄斯探索造神真相（约2112年11月初）</option>
+          </optgroup>
+          <optgroup label="第三部 · 诸神之战（2112年11月-2113年12月）">
+            <option value="约2112年11月1日">第67幕 · 赫利俄斯神前对决（约2112年11月1日）</option>
+            <option value="约2112年11月4日">第68幕 · 黄昏之乡保卫战（约2112年11月4日）</option>
+            <option value="约2112年11月7日">第69幕 · 巴德尔陨落（约2112年11月7日）</option>
+            <option value="约2112年11月9日">第70幕 · 巴德尔馈赠（约2112年11月9日）</option>
+            <option value="约2112年11月11日">第71幕 · 槐诗测试极限（约2112年11月11日）</option>
+            <option value="约2112年11月15日">第72幕 · 毕业旅行周游（约2112年11月15日）</option>
+            <option value="约2112年11月24日">第73幕 · 拉斯维加斯谈判（约2112年11月24日）</option>
+            <option value="2112年11月27日">第74幕 · 艾晴收容"谎言"（2112年11月27日）</option>
+            <option value="约2112年12月8日">第75幕 · 俄联昼夜之镜（约2112年12月8日）</option>
+            <option value="约2112年12月13日">第76幕 · 罗马放还马库斯（约2112年12月13日）</option>
+            <option value="约2112年12月15日">第77幕 · 格陵兰截杀陆白砚（约2112年12月15日）</option>
+            <option value="约2112年12月19日">第78幕 · 黄金黎明遭清算（约2112年12月19日）</option>
+            <option value="约2112年12月22日">第79幕 · 太一院天阙营造（约2112年12月22日）</option>
+            <option value="约2112年12月24日">第80幕 · 吹笛人气候阳谋（约2112年12月24日）</option>
+            <option value="约2112年12月26日">第81幕 · 鹿鸣馆打压清算（约2112年12月26日）</option>
+            <option value="约2112年12月28日">第82幕 · 伦敦馈赠哨站（约2112年12月28日）</option>
+            <option value="约2112年12月30日">第83幕 · 地狱初战与铁炎城（约2112年12月30日）</option>
+            <option value="约2112年12月31日">第84幕 · 雷鸣白原爆炸（约2112年12月31日）</option>
+            <option value="约2113年1月2日">第85幕 · 岩铁之心移植（约2113年1月2日）</option>
+            <option value="约2113年1月4日">第86幕 · 十六势力合围破城（约2113年1月4日）</option>
+            <option value="约2113年1月8日">第87幕 · 乐园盟约（约2113年1月8日）</option>
+            <option value="约2113年1月10日">第88幕 · 太阳船恶战（约2113年1月10日）</option>
+            <option value="约2113年1月14日">第89幕 · 鹦鹉螺复苏（约2113年1月14日）</option>
+            <option value="约2113年1月17日">第90幕 · 云中君进阶斩纳吉尔法（约2113年1月17日）</option>
+            <option value="约2113年1月20日">第91幕 · 波旬作战与葬礼（约2113年1月20日）</option>
+            <option value="约2113年1月25日">第92幕 · 剑圣对决（约2113年1月25日）</option>
+            <option value="约2113年1月30日">第93幕 · 存续院豪赌（约2113年1月30日）</option>
+            <option value="约2113年2月1日">第94幕 · 深渊之赌开局（约2113年2月1日）</option>
+            <option value="约2113年2月4日">第95幕 · 黄金黎明围杀（约2113年2月4日）</option>
+            <option value="约2113年2月8日">第96幕 · 东君进阶斩天梯（约2113年2月8日）</option>
+            <option value="约2113年2月9日">第97幕 · 升座与愚者揭露（约2113年2月9日）</option>
+            <option value="约2113年2月11日">第98幕 · 复活盖亚与上泉之死（约2113年2月11日）</option>
+            <option value="约2113年2月12日">第99幕 · 盖亚陨落与太一降临（约2113年2月12日）</option>
+            <option value="约2113年2月16日">第100幕 · 马库斯之死（约2113年2月16日）</option>
+            <option value="约2113年2月21日">第101幕 · 索拉诺魔山攻防战（约2113年2月21日）</option>
+            <option value="约2113年3月9日">第102幕 · 福音圣座登陆战（约2113年3月9日）</option>
+            <option value="约2113年3月16日">第103幕 · 圣都觉醒与三重化身（约2113年3月16日）</option>
+            <option value="约2113年9月中旬">第104幕 · 调律师赴死（约2113年9月中旬）</option>
+            <option value="约2113年9月23日">第105幕 · 祸国之汤崩圣都（约2113年9月23日）</option>
+            <option value="约2113年10月6日">第106幕 · 牧场主降临（约2113年10月6日）</option>
+            <option value="约2113年11月1日">第107幕 · 原罪军团组建（约2113年11月1日）</option>
+            <option value="约2113年12月8日">第108幕 · 诸界之战开战（约2113年12月8日）</option>
+            <option value="约2113年12月11日">第109幕 · 初战与围杀尸林君（约2113年12月11日）</option>
+            <option value="约2113年12月14日">第110幕 · 反攻与魔山授首（约2113年12月14日）</option>
+            <option value="约2113年12月17日">第111幕 · 生长天背叛与潜入深渊（约2113年12月17日）</option>
+            <option value="约2113年12月19日">第112幕 · 深渊烈日渗透（约2113年12月19日）</option>
+            <option value="约2113年12月21日">第113幕 · 黄金黎明覆灭（约2113年12月21日）</option>
+            <option value="约2113年12月23日">第114幕 · 弑神之战（约2113年12月23日）</option>
+            <option value="约2113年12月25日">第115幕 · 再生计划启动（约2113年12月25日）</option>
+            <option value="约2113年12月26日">第116幕 · 伦敦内战与所罗门登场（约2113年12月26日）</option>
+            <option value="约2113年12月30日">第117幕 · 终局之战（约2113年12月30日）</option>
+          </optgroup>
+          <optgroup label="第四部 · 终局与新世（2114年1月-3月）">
+            <option value="约2114年1月4日">第118幕 · 再生计划收官（约2114年1月4日）</option>
+            <option value="约2114年1月8日">第119幕 · 生长卿之战（约2114年1月8日）</option>
+            <option value="约2114年1月14日">第120幕 · 北极星之战（约2114年1月14日）</option>
+            <option value="约2114年1月17日">第121幕 · 大浊流之灾（约2114年1月17日）</option>
+            <option value="约2114年1月19日">第122幕 · 焚窟主之战（约2114年1月19日）</option>
+            <option value="约2114年1月25日">第123幕 · 罗刹母女之战（约2114年1月25日）</option>
+            <option value="约2114年1月29日">第124幕 · 东君进阶（约2114年1月29日）</option>
+            <option value="约2114年2月1日">第125幕 · 决战前奏（约2114年2月1日）</option>
+            <option value="约2114年2月3日">第126幕 · 诸界总攻（约2114年2月3日）</option>
+            <option value="约2114年2月3日">第127幕 · 绝罚卿之战（约2114年2月3日）</option>
+            <option value="约2114年2月3日">第128幕 · 吹笛人之死（约2114年2月3日）</option>
+            <option value="约2114年2月4日">第129幕 · 现境之太阳（约2114年2月4日）</option>
+            <option value="约2114年2月10日">第130幕 · 迦南收编（约2114年2月10日）</option>
+            <option value="约2114年2月18日">第131幕 · 天国重启（约2114年2月18日）</option>
+            <option value="约2114年2月25日">第132幕 · 天国计划（约2114年2月25日）</option>
+            <option value="新世历471年3月7日">第133幕 · 新世尾声（新世历471年3月7日）</option>
+          </optgroup>
+          <option value="主线任意段">主线任意段</option>
+        </select>
+      </label>
+      <label>降落位置
+        <input id="f-place" placeholder="默认新海市">
+        <select id="f-place-sel">
+          <option value="">（手填，或选地点）</option>
+          <option value="新海市">新海市</option>
+          <option value="燕京">燕京</option>
+          <option value="金陵">金陵</option>
+          <option value="魔都">魔都</option>
+          <option value="白城">白城（边境）</option>
+          <option value="京都">京都（瀛洲）</option>
+          <option value="丹波内圈">丹波内圈（地狱锚点）</option>
+          <option value="边境">边境</option>
+          <option value="地狱">地狱</option>
+        </select>
+      </label>
+      <p class="hint">时间与地点自由选择，可进入主线任意段、任意地理位置。</p>
+    </div>
+
+    <div class="tq-sec">
+      <h2>贰 · 身份</h2>
+      <label>姓名 <input id="f-name" placeholder="你的名字"></label>
+      <label>性别
+        <select id="f-gender"><option>男</option><option>女</option><option>其他</option></select>
+      </label>
+      <label>年龄 <input id="f-age" type="number" placeholder="数字"></label>
+      <label>身份职位 <input id="f-identity" placeholder="如：新海市民 / 天文会新人 / 流浪者"></label>
+      <label>所属势力 <input id="f-faction" placeholder="无 / 天文会 / 象牙之塔 …"></label>
+      <label>种族 <input id="f-race" value="人类"></label>
+      <label>外貌 <input id="f-appearance" placeholder="如：灰铁风衣、漆黑眼瞳…"></label>
+      <label>当前服饰 <input id="f-clothing" placeholder="如：灰铁风衣 + 大提琴"></label>
+    </div>
+
+    <div class="tq-sec">
+      <h2>叁 · 能力</h2>
+      <label>谱系
+        <select id="f-lineage">
+          <option value="无谱系">无谱系</option>
+          <option>天国谱系（天问之路）</option>
+          <option>天国谱系（黄昏之路）</option>
+          <option>天国谱系（永恒之路）</option>
+          <option>天国谱系（神髓之路）</option>
+          <option>天国谱系（乐园之路）</option>
+          <option>东夏谱系</option>
+          <option>罗马谱系</option>
+          <option>埃及谱系</option>
+          <option>俄联谱系</option>
+          <option>美洲谱系</option>
+          <option>天竺谱系</option>
+          <option>瀛洲谱系</option>
+          <option>原创谱系</option>
+        </select>
+      </label>
+      <label id="lineage-custom-label" style="display:none">原创谱系名 <input id="f-lineage-custom" placeholder="如：苍龙之路"></label>
+      <label>初始阶位
+        <select id="f-rank">
+          <option>不入阶</option><option>应激期</option><option>发育期</option>
+          <option>水银</option><option>黄金</option><option>以太</option>
+          <option>星锑</option><option>贤者之石</option><option>天敌</option>
+        </select>
+      </label>
+      <label>圣痕（可空，多条用逗号分隔）<input id="f-seal" placeholder="如：阴魂 / 少司命,大司命"></label>
+      <label>灵魂能力（可空；已成长角色可填名称+位阶+效果）
+        <input id="f-soul" placeholder="名称，如：圈禁之手">
+        <select id="f-soul-tier"><option value="1">1阶</option><option value="2">2阶</option><option value="3">3阶</option><option value="4">4阶</option><option value="5">5阶</option></select>
+        <input id="f-soul-effect" placeholder="效果，如：突破灵与物质壁障，源质化铁">
+      </label>
+      <label>凝固度（0-200，默认0；100=凝固者）<input id="f-coag" type="number" min="0" max="200" value="0"></label>
+      <label>副职（可空；每条「职业名：等级：协会」，多条用分号分隔）
+        <input id="f-profession" placeholder="如：厨魔：六星：厨魔大赛组委会；灾厄乐师：第199名：诸地狱联合音乐协会">
+      </label>
+      <p class="hint">低阶/凡人开局可留空灵魂能力（完成伟业后才觉醒）；若你设定进入游戏的就是已成长角色，可在这里直接填灵魂能力与位阶、效果。阶位决定初始源质（不入阶0→天敌9999）。</p>
+    </div>
+
+    <div class="tq-sec">
+      <h2>肆 · 背景</h2>
+      <label>公开身份 <textarea id="f-public" rows="2" placeholder="别人眼中的你"></textarea></label>
+      <label>当前动机 <textarea id="f-motive" rows="2" placeholder="你想做什么"></textarea></label>
+      <label>隐秘档案 <textarea id="f-secret" rows="2" placeholder="没有可填：无"></textarea></label>
+    </div>
+
+    <div class="tq-sec">
+      <h2>伍 · 关系</h2>
+      <label>开局关系（自由填，和谁、什么关系）<textarea id="f-relations" rows="3" placeholder="如：与槐诗陌生；与傅依同班；欠柳东黎一个人情"></textarea></label>
+    </div>
+
+    <div class="tq-sec">
+      <h2>陆 · 背包</h2>
+      <label>初始物品（可空，逗号分隔）<input id="f-items" placeholder="如：祭祀刀, 砥石手套, 现金3000"></label>
+    </div>
+
+    <div class="tq-sec">
+      <h2>陆·贰 初始武器（可空；主手/副手各一把）</h2>
+      <p class="hint">武器类别自由填（≤4字，如刀/长枪/火枪/扇子），只是描述武器长什么样，给 AI 理解用的。</p>
+      <label>主手武器名 <input id="f-wmain-name" placeholder="如：墨骨"></label>
+      <label>主手类别（≤4字） <input id="f-wmain-type" maxlength="4" placeholder="扇子"></label>
+      <label>主手伤害 <input id="f-wmain-dmg" type="number" min="0" max="50" placeholder="12"></label>
+      <label>主手阶位 <select id="f-wmain-rank"><option>不入阶</option><option>应激期</option><option>发育期</option><option>水银</option><option>黄金</option><option>以太</option><option>星锑</option><option>贤者之石</option><option>天敌</option></select></label>
+      <label>主手破阶标签 <select id="f-wmain-break"><option value="0">无</option><option value="1">有</option></select></label>
+      <label>主手简介/特殊效果（≤20字） <input id="f-wmain-fx" maxlength="20" placeholder="如：开扇时掀起风刃"></label>
+      <label>副手武器名 <input id="f-woff-name" placeholder="可空"></label>
+      <label>副手类别（≤4字） <input id="f-woff-type" maxlength="4" placeholder="长枪"></label>
+      <label>副手伤害 <input id="f-woff-dmg" type="number" min="0" max="50" placeholder="10"></label>
+      <label>副手阶位 <select id="f-woff-rank"><option>不入阶</option><option>应激期</option><option>发育期</option><option>水银</option><option>黄金</option><option>以太</option><option>星锑</option><option>贤者之石</option><option>天敌</option></select></label>
+      <label>副手破阶标签 <select id="f-woff-break"><option value="0">无</option><option value="1">有</option></select></label>
+      <label>副手简介/特殊效果（≤20字） <input id="f-woff-fx" maxlength="20" placeholder="可空"></label>
+    </div>
+
+    <div class="tq-sec">
+      <h2>柒 · 开场白</h2>
+      <label>开场白（一楼发给正文 AI 的话，可空）<textarea id="f-opening" rows="3" placeholder="如：我叫XX，今晚刚到新海，想先找地方落脚…"></textarea></label>
+      <p class="hint">这段会作为你进入世界后对正文 AI 说的第一句话。</p>
+    </div>
+
+    <div class="tq-sec">
+      <h2>捌 · 封卷</h2>
+      <p class="hint">确认无误后封卷入世：写入角色档案，把你送入你选定的时间与地点。</p>
+      <button class="tq-btn primary" id="tq-commit-btn" type="button">封卷入世</button>
+      <p class="tq-msg" id="tq-msg"></p>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function v(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+  var pages=[];var cur=0;
+  function getPages(){return Array.prototype.slice.call(document.querySelectorAll('#tq-form .tq-sec'));}
+  function buildPager(){
+    var f=document.getElementById('tq-form');
+    var old=document.getElementById('tq-pager');
+    if(old)old.parentNode.removeChild(old);
+    var pager=document.createElement('div');
+    pager.id='tq-pager';pager.className='tq-pager';
+    pager.innerHTML='<button class="tq-btn nav" id="tq-prev" type="button">&larr; 上一页</button><span class="tq-pageinfo" id="tq-pageinfo"></span><button class="tq-btn nav" id="tq-next" type="button">下一页 &rarr;</button>';
+    f.appendChild(pager);
+    document.getElementById('tq-prev').addEventListener('click',function(){go(cur-1);});
+    document.getElementById('tq-next').addEventListener('click',function(){go(cur+1);});
+  }
+  function go(i){
+    pages=getPages();
+    if(i<0||i>=pages.length)return;
+    cur=i;
+    pages.forEach(function(s,idx){s.style.display=(idx===cur)?'block':'none';});
+    var info=document.getElementById('tq-pageinfo');
+    if(info)info.textContent=(cur+1)+' / '+pages.length;
+    var prev=document.getElementById('tq-prev');
+    var next=document.getElementById('tq-next');
+    if(prev)prev.disabled=(cur===0);
+    if(next){next.disabled=(cur===pages.length-1);next.style.visibility=(cur===pages.length-1)?'hidden':'visible';}
+  }
+  function start(){
+    var c=document.querySelector('.tq-cover');if(c)c.style.display='none';
+    var f=document.getElementById('tq-form');if(f)f.style.display='block';
+    pages=getPages();
+    if(!pages.length)return;
+    buildPager();
+    go(0);
+    f.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  async function commit(){
+    var msg=document.getElementById('tq-msg');
+    var SOURCE_BASE={'不入阶':0,'应激期':20,'发育期':50,'水银':100,'黄金':200,'以太':500,'星锑':800,'贤者之石':1200,'天敌':9999,'阶位未知':0};
+    var name=v('f-name')||'{{user}}';
+    var gender=v('f-gender')||'男';
+    var age=parseInt(v('f-age'))||null;
+    var identity=v('f-identity')||'未设定';
+    var faction=v('f-faction')||'无';
+    var race=v('f-race')||'人类';
+    var lineage=(v('f-lineage')==='原创谱系')?(v('f-lineage-custom')||'原创谱系'):(v('f-lineage')||'无谱系');
+    var rank=v('f-rank')||'不入阶';
+    var seals=(v('f-seal')||'').split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean).map(function(nm){return {名称:nm, 日常:'', 激发:''};});
+    var soulName=v('f-soul');
+    var soulTier=parseInt(v('f-soul-tier'))||1;
+    var soulEffect=v('f-soul-effect');
+    var souls=soulName?{[soulName]:{效果:soulEffect,阶位:soulTier}}:{};
+    var coag=Math.min(200,Math.max(0,parseInt(v('f-coag'))||0));
+    var COAG_LAND={'不入阶':'授名者','应激期':'授名者','发育期':'授名者','水银':'授名者','黄金':'着衣者','以太':'着衣者','星锑':'冠戴者','贤者之石':'统治者','天敌':'地狱之王'};
+    var COAG_NEXT={'授名者':['着衣者',120],'着衣者':['冠戴者',140],'冠戴者':['统治者',160],'统治者':['地狱之王',180]};
+    var coagLand=COAG_LAND[rank]||'授名者';
+    var coagNxt=COAG_NEXT[coagLand];
+    var coagNextName=coagNxt?coagNxt[0]:'';
+    var coagNextNum=coagNxt?coagNxt[1]:0;
+    var professions={};
+    (v('f-profession')||'').split(/[；;]/).map(function(s){return s.trim();}).filter(Boolean).forEach(function(item){
+      var parts=item.split(/[：:]/).map(function(s){return s.trim();}).filter(Boolean);
+      if(parts.length>=2)professions[parts[0]]={等级:parts[1]||'',协会:parts[2]||''};
+    });
+    function readWeapon(prefix){
+      var nm=v(prefix+'-name'); if(!nm)return null;
+      var fx=v(prefix+'-fx');
+      return {物品ID:prefix,名称:nm,类型:'武器',武器类别:(v(prefix+'-type')||'其他').slice(0,4),阶位:v(prefix+'-rank')||'水银',基础伤害:parseInt(v(prefix+'-dmg'))||0,命中修正:0,破阶标签:(v(prefix+'-break')==='1'?['破阶']:[]),弹药或充能:null,状态:'完好',特殊效果:fx?[fx.slice(0,20)]:[],有效距离:['近距']};
+    }
+    var mainW=readWeapon('f-wmain'), offW=readWeapon('f-woff');
+    var weapons={};
+    if(mainW)weapons[mainW.物品ID]=mainW;
+    if(offW)weapons[offW.物品ID]=offW;
+    function wdesc(w){return w?('「'+esc(w.名称)+'」'+(w.武器类别?'（'+esc(w.武器类别)+'）':'')+' 伤害'+w.基础伤害+' '+esc(w.阶位)+(w.破阶标签.length?'·破阶':'')+(w.特殊效果.length?'·'+esc(w.特殊效果[0]):'')):'';}
+    var date=v('f-date')||'2110年前夜';
+    var place=v('f-place')||'新海市';
+    var publicId=v('f-public'), motive=v('f-motive'), secret=v('f-secret'), appearance=v('f-appearance')||'', clothing=v('f-clothing')||'';
+    var relations=v('f-relations');
+    var opening=v('f-opening');
+    var itemNames=(v('f-items')||'').split(/[,，、]/).map(function(s){return s.trim();}).filter(Boolean);
+    var items={};
+    itemNames.forEach(function(nm,i){items['item-'+i]={物品ID:'item-'+i,名称:nm,类型:'普通物品',数量:1,说明:''};});
+    if(mainW)items[mainW.物品ID]=mainW;
+    if(offW)items[offW.物品ID]=offW;
+    try{
+      var option={type:'message',message_id:getCurrentMessageId()};
+      await updateVariablesWith(function(vars){
+        _.set(vars,'stat_data.玩家档案.基础',{姓名:name,性别:gender,年龄:age,当前身份:identity,当前势力:faction,种族:race,谱系:lineage,外貌:appearance,圣痕:seals});
+        _.set(vars,'stat_data.玩家档案.战力',{基础阶位:rank,当前阶位:rank,爆发态:null,极限态:null});
+        _.set(vars,'stat_data.玩家档案.当前源质',SOURCE_BASE[rank]||0);
+        _.set(vars,'stat_data.玩家档案.源质上限',SOURCE_BASE[rank]||0);
+        _.set(vars,'stat_data.玩家档案.当前服饰',clothing);
+        _.set(vars,'stat_data.玩家档案.生理状态','健康');
+        _.set(vars,'stat_data.玩家档案.能力',{技能:{},灵魂能力:souls,威权:{},职业:professions});
+        _.set(vars,'stat_data.玩家档案.凝固度',coag);
+        _.set(vars,'stat_data.物品栏',items);
+        _.set(vars,'stat_data.玩家档案.当前武器',mainW||null);
+        _.set(vars,'stat_data.玩家档案.副手武器',offW||null);
+        _.set(vars,'stat_data.当前时间.日期',date);
+        _.set(vars,'stat_data.当前地点.名称',place);
+        return vars;
+      },option);
+      var desc='我是'+esc(name)+'，'+esc(gender)+'，'+(age==null?'年龄不详':esc(age)+'岁')+'，'+esc(identity)+'。';
+      desc+='种族：'+esc(race)+'，谱系'+esc(lineage)+'，阶位'+esc(rank)+(seals.length?'，圣痕'+esc(seals.map(function(s){return s.名称;}).join('、')):'')+(soulName?'，灵魂能力'+esc(soulName)+'（'+soulTier+'阶'+(soulEffect?'，效果：'+esc(soulEffect):'')+'）':'')+'。';
+      if(appearance)desc+='外貌：'+esc(appearance)+'。';
+      if(clothing)desc+='当前服饰：'+esc(clothing)+'。';
+      desc+='当前时间：'+esc(date)+'，当前地点：'+esc(place)+'。';
+      if(publicId)desc+='公开身份：'+esc(publicId)+'。';
+      if(motive)desc+='当前动机：'+esc(motive)+'。';
+      if(secret&&secret!=='无')desc+='隐秘：'+esc(secret)+'。';
+      if(relations)desc+='开局关系：'+esc(relations)+'。';
+      if(itemNames.length)desc+='初始物品：'+esc(itemNames.join('、'))+'。';
+      if(mainW||offW)desc+='初始武器：'+(mainW?('主手'+wdesc(mainW)):'')+(offW?('；副手'+wdesc(offW)):'')+'。';
+      if(Object.keys(professions).length)desc+='副职：'+esc(Object.keys(professions).map(function(k){return k+(professions[k].等级?'（'+professions[k].等级+'）':'');}).join('、'))+'。';
+      if(coag>0)desc+='凝固度：'+coag+'。';
+      var initCmd='\n\n【开局初始化·本条为建档指令，请在本轮「变量更新」中执行，正文不得复述】\n'
+        +(seals.length
+          ?'1. 圣痕已填〔'+esc(seals.map(function(s){return s.名称;}).join('、'))+'〕，请补全每条圣痕的 日常（静默态痕迹）与 激发（催动源质后的异象），replace /玩家档案/基础/圣痕 为完整对象数组。\n'
+          :'1. 圣痕：基础.圣痕为空，依谱系「'+esc(lineage)+'」与阶位「'+esc(rank)+'」确定该谱系此阶位的圣痕称谓（圣痕与玩家阶位一一对应、谱系路径隔离，见「圣痕与谱系」：天问之路一阶=礼魂/阴魂、永恒之路一阶=骑士；原文无此路径此阶位圣痕时按路径气质现场生成），insert 到 /玩家档案/基础/圣痕/-（每条含 名称/日常/激发，日常与激发不得留空）。\n')
+        +'2. 技能：依该圣痕生成两个技能 insert 到 /玩家档案/能力/技能/——①主动技能（消耗源质、发动负荷>0，可主动发动）＋②被动技能（消耗全为0、发动负荷0，常驻日常效果）；每条含 效果/消耗{源质,生命,修正值,歪曲度，为0不写}/来源=圣痕/发动负荷/每回合维持负荷/使用条件/特殊限制/破阶标签；使用条件、特殊限制、破阶标签是数组。\n'
+        +'3. 进阶目标：依「晋升方式」生成下一阶段进阶仪式要求——replace /玩家档案/成长/下一目标 为「进阶{下一阶位}（{谱系}）」；replace /玩家档案/成长/里程碑条件 为 2-3 条字符串数组，每条「类型：一句话试炼要求」（类型取 掌握/实战/代价或稳定性，至少一条掌握、一条实战）。\n'
+        +(soulName?'灵魂能力已填〔'+esc(soulName)+'〕，无需补足。':'灵魂能力未填，禁止凭空补足（待完成伟业后觉醒）。')
+        +(coag>0?('\n凝固度已填〔'+coag+'〕：replace /玩家档案/凝固度 为 '+coag+'。'):'')
+        +(coag>=100?(coagNextNum?('凝固度达100即凝固者：replace /玩家档案/凝固/阶位 为 "'+coagLand+'"; replace /玩家档案/凝固/下一目标 为 "进阶'+coagNextName+'·凝固度'+coagNextNum+'"; replace /玩家档案/凝固/里程碑条件 为 ["凝固度：达到'+coagNextNum+'","掌握：（依角色气质写一句话试炼）","实战：（依角色气质写一句话试炼）"]（第一条固定为凝固度阈值，其余类型取 掌握/实战/代价或稳定性；三项都不得留空）。'):('凝固度达100即凝固者：replace /玩家档案/凝固/阶位 为 "'+coagLand+'"（已是地狱之王，无更高凝固阶位）。')):'')
+        +((mainW||offW)?('\n初始武器：'+(mainW?('insert /物品栏/'+mainW.物品ID+' = '+JSON.stringify(mainW)+'，再 replace /玩家档案/当前武器 为该对象；'):'')+(offW?('insert /物品栏/'+offW.物品ID+' = '+JSON.stringify(offW)+'，再 replace /玩家档案/副手武器 为该对象；'):'')):'')
+        +(Object.keys(professions).length?('\n副职已填〔'+esc(Object.keys(professions).join('、'))+'〕：' + Object.keys(professions).map(function(k){var d=professions[k]||{};var assoc=d.协会||(k==='厨魔'?'厨魔大赛组委会':(k==='灾厄乐师'?'诸地狱联合音乐协会':(k==='学者'?'象牙之塔':''))); return 'insert /玩家档案/能力/职业/'+k+' = {"等级":"'+esc(d.等级||'')+'","协会":"'+esc(assoc)+'"};';}).join('') + Object.keys(professions).map(function(k){var d=professions[k]||{};var nm=k+(d.等级||''); return ' insert /玩家档案/称号/- = {"称号名":"'+esc(nm)+'","阶位":1,"效果":"'+esc(d.等级?('拥有'+nm+'等级的权利与待遇'):(k+'对应权利与待遇'))+'"};';}).join('') + ' 称号字段固定为 称号名/阶位/效果，禁止写成"名称"。'):'');
+      var firstMsg=opening?(opening+'\n\n'+desc+initCmd):(desc+initCmd);
+      createChatMessages([{role:'user',name:name,message:firstMsg}]).then(function(){triggerSlash('/trigger');});
+      msg.textContent='档案已写入，正在送你进入'+(place||'新海市')+'…';
+    }catch(e){msg.textContent='出错：'+e.message;}
+  }
+  var startBtn=document.getElementById('tq-start-btn');
+  if(startBtn)startBtn.addEventListener('click',start);
+  var commitBtn=document.getElementById('tq-commit-btn');
+  if(commitBtn)commitBtn.addEventListener('click',commit);
+  var dateSel=document.getElementById('f-date-sel');
+  if(dateSel)dateSel.addEventListener('change',function(){if(this.value)document.getElementById('f-date').value=this.value;});
+  var placeSel=document.getElementById('f-place-sel');
+  if(placeSel)placeSel.addEventListener('change',function(){if(this.value)document.getElementById('f-place').value=this.value;});
+  var lineage=document.getElementById('f-lineage');
+  if(lineage)lineage.addEventListener('change',function(){document.getElementById('lineage-custom-label').style.display=this.value==='原创谱系'?'':'none';});
+})();
+</script>
+</body>
+</html>
+```

@@ -1,0 +1,733 @@
+# 《天启预报》同人卡 · 创作规划（v1）
+# 粗略规划模式：细节（条目正文）留到创作阶段逐条确认。来源：design-spec.md + 剧情/人设/玩法草稿。
+
+project:
+  name: 天启预报
+  worldbookName: 天启预报
+  form: charactercard
+  mvu: true
+  ui_mode: frontend   # 最终预期交互式状态栏/入世卷（tavern-ui）；现阶段开场白为叙事式轻量建卡
+  # avatar: 待定（暂无头像图，先以 json artifact 打包；后续提供头像可改 png）
+
+world:
+  overview: 半架空现代都市超凡世界（公元2110年）。现境（人类文明，三大封锁庇护）之外是边境与地狱（旧世界残骸堆积成的已死世界）；毁灭要素虎视眈眈。穷学生槐诗捡到命运之书，卷入现境与地狱的万年棋局。玩家以完全自由自定义的原创角色入场，可改变原作走向。
+  regions:
+    - name: 现境·东夏
+      scenes: [新海市, 石髓馆, 老塘镇废墟, 青秀山, 升华者集市, 魔都, 金陵, 象牙之塔, 丹波内圈]
+      description: 人类文明庇护所，三大封锁覆盖
+    - name: 边境
+      scenes: [暗网, 无尽之海, 香巴拉, 灰岸, 移动边境]
+      description: 现境之外的过渡地带，主权稀薄
+    - name: 地狱/深渊
+      scenes: [黄昏之乡, 雷鸣白原, 锈蚀塔林, 至福乐土外沿, 铁晶座, 雷霆之海]
+      description: 已死世界的坟墓，深度编号越高越危险
+  factions:
+    - name: 天文会体系
+      description: 维护现境秩序（含统辖局/存续院/铸铁军团/原暗部队）
+      key_members: [艾晴, 叶戈尔, 老肖, 灰衣人, 沙赫]
+    - name: 东夏社保局
+      description: 东夏官方超凡机构（特事处/社保局）
+      key_members: [玄鸟, 符残光, 叶雪涯, 诸红尘, 傅处长]
+    - name: 象牙之塔与天国谱系
+      description: 理想国遗留，罗素重建；槐诗主战场
+      key_members: [罗素, 艾萨克, 彤姬, 雷蒙德, 陈女士]
+    - name: 绿日
+      description: 地狱侧势力，佩伦统领，十灾
+      key_members: [佩伦, 劳伦斯, 柳东黎, 红手套]
+    - name: 归净之民
+      description: 牧场主崇拜，魔都通路阴谋
+    - name: 黄金黎明
+      description: 理想国分裂产物，无何有之乡
+      key_members: [玛瑟斯, 伍德曼, 维斯考特, 亚雷斯塔]
+    - name: 瀛洲鹿鸣馆与将军
+      description: 瀛洲华族公家机构
+    - name: 地狱侧诸王
+      description: 枯萎之王/雷霆大君/赫笛/小猫乐园等
+
+characters:
+  - name: 槐诗
+    basic:
+      age: 17（2110开局）
+      gender: 男
+      identity: 世界核心角色（AI 扮演）；天问之路升华者、命运之书持有者、天文会监查官
+      relationship: 玩家的主要互动对象之一（可结盟/敌对/改变其命运，不可操控）
+    personality:
+      base: 咸鱼乐天、嘴硬心软、守护成性
+    tri_faceted: false
+  - name: 彤姬（乌鸦）
+    basic:
+      age: 不详（神明级）
+      gender: 女
+      identity: 槐诗的契约者与导师、命运之书化身、前东夏神明帝俊
+      relationship: 能"看见命运"的存在，会注意到玩家的异常
+    personality:
+      base: 居高临下温柔+甜腻宣布主权、解说狂魔
+  - name: 艾晴
+    basic:
+      age: 与槐诗同年段
+      gender: 女
+      identity: 天文会监察官→统辖局专员→架空楼层最高负责人
+      relationship: 童年玩伴/上司/冤家
+    personality:
+      base: 惜字如金、面冷心黑、深情克制
+  - name: 柳东黎
+    basic:
+      age: 成年
+      gender: 男
+      identity: 会所一哥→暗线监察官、时间跳跃者
+      relationship: 损友、可托付后背
+    personality:
+      base: 轻佻谜语人、沧桑重情
+  - name: 罗娴
+    basic:
+      age: 约26（资料库17推算，2026-08-28 裁决）
+      gender: 女
+      identity: 罗老之女（深渊造物）、武道天才
+      relationship: "想要杀死槐诗的初恋"，玩家可介入其救赎线
+    personality:
+      base: 纯粹、不懂感情、行动派
+  - name: 莉莉（海拉）
+    basic:
+      age: 存在以纪元计（自称四岁半）
+      gender: 女
+      identity: 贤者之石人造人→创造主
+      relationship: 温柔澄澈的创造主
+    personality:
+      base: 温柔、澄澈、句式干净
+  - name: 傅依
+    basic:
+      age: 与槐诗同班
+      gender: 女
+      identity: 班长→存续院缄默者
+      relationship: "好兄弟"
+    personality:
+      base: 优等生外壳、内心叛逆
+  - name: 白帝子·褚清羽
+    basic:
+      age: 15
+      gender: 女
+      identity: 东夏谱系第二、五阶受加冕者（圣痕凤凰）
+      relationship: 路痴武力天花板
+    personality:
+      base: 至烈至锐、天然路痴、行动派
+  - name: 罗素
+    basic:
+      age: 112
+      gender: 男
+      identity: 象牙之塔校长（真身洛基/密米尔）、谎言之王
+      relationship: 操盘者/老师
+    personality:
+      base: 老阴批、乐子人、护短
+  - name: 罗老（罗肆为）
+    basic:
+      age: 中年
+      gender: 男
+      identity: 果园健身房总教头、罗娴之父
+      relationship: 授业恩师
+    personality:
+      base: 干脆、武人、决绝
+  - name: 房叔
+    basic:
+      age: 外观老人
+      gender: 男
+      identity: 石髓馆馆灵
+      relationship: 槐诗唯一的亲人
+    personality:
+      base: 和煦慈祥、管家腔
+  # NPC 见 entries：老杨/王海/凶猿/红手套/戚问/戚元/何洛/老肖/玄鸟/叶雪涯/符残光/原照/原缘/林十九/郭守缺/里见琥珀/里见真希/剑圣上泉/佐佐木清正/赫笛/小猫/别西卜/灰衣人/神城未来/宫本弦一郎/马库斯/应芳州/陈女士/雷蒙德/浮士德
+
+style:
+  perspective: 第二人称（玩家所见即所得；AI 扮演所有原作角色）
+  tone: 风月式——吐槽流外壳+中二浪漫内核；短句顿挫、音乐化与炼金化比喻
+  mood: 燃 + 暖 + 克制的悲壮；HE 底色
+  reference: 风月《天启预报》原作文风（15_文风样本.md）
+
+entries:                      # 创作顺序（分组），项目级事实来源
+  # ── 扮演准则（before_char，常驻）──
+  - name: 叙事基调
+    type: 扮演准则
+    path: 世界书/扮演准则/叙事基调.yaml
+  - name: 蝴蝶效应
+    type: 扮演准则
+    path: 世界书/扮演准则/蝴蝶效应.yaml
+    purpose: 同人改编因果规则；含"被改变原作节点"输出要求（<divergence> 标签，正则显示隐藏，见玩法/02）
+  - name: 防全知
+    type: 扮演准则
+    path: 世界书/扮演准则/防全知.yaml
+  - name: 战力判定
+    type: 扮演准则
+    path: 世界书/扮演准则/战力判定.yaml
+  - name: 战斗规则
+    type: 扮演准则
+    path: 世界书/扮演准则/战斗规则_速查.txt
+    purpose: d20 叙事回合制战斗速查（C 档）：公开检定/阶位档值/破阶/伤害/HP/战斗负荷/濒死/距离掩体；含内联 EJS 骰池
+  - name: 战斗规则-细则
+    type: 扮演准则
+    path: 世界书/扮演准则/战斗规则_细则.txt
+    purpose: d20 战斗细则（按需触发）：公开检定格式/叙事回合/先手/攻击/防御反应/范围攻击/治疗/战斗结束
+  - name: 扮演准则_GM
+    type: 扮演准则
+    path: 世界书/扮演准则/扮演准则_GM.yaml
+    purpose: AI 兼任 GM 职责细则（旁白/判定/推进/以玩家为中心不围着转）；正文输出纪律（无系统语言/变量/标签等元信息，纯叙事沉浸）；玩家侧防全知（情报靠玩家行动与推断获得，AI 不替玩家揭示未知）
+  - name: 玩家角色档案引导
+    type: 扮演准则
+    path: 世界书/扮演准则/玩家角色档案引导.yaml
+    purpose: 入世卷轻量建卡引导（时间线落点/身份/能力/背景/关系）
+  - name: 晋升方式
+    type: 扮演准则
+    path: 世界书/扮演准则/晋升方式.yaml
+    purpose: 圣痕进阶规则+命运之门机制
+  - name: 随机事件系统
+    type: 扮演准则
+    path: 世界书/扮演准则/随机事件系统.yaml
+    purpose: L1 规则壳（触发/开关/收尾铁律/通用种子池）
+  - name: 世界时钟
+    type: 扮演准则
+    path: 世界书/扮演准则/世界时钟.yaml
+    purpose: 沙盒时间推进（条件推进/玩家缺席世界照走/时间锚点）
+  - name: 事件条件化
+    type: 扮演准则
+    path: 世界书/扮演准则/事件条件化.yaml
+    purpose: 段条目降级为候选事件库；触发条件四要素；在场/缺席双写
+  - name: 探索规则
+    type: 扮演准则
+    path: 世界书/扮演准则/探索规则.yaml
+    purpose: 开放区域/NPC 日程/情报获取（防全知落地）
+  # ── 世界观（before_char）──
+  - name: 世界
+    type: 世界观
+    path: 世界书/世界观/世界.yaml
+  - name: 术语
+    type: 世界观
+    path: 世界书/世界观/术语.yaml
+  - name: 升华者与阶位
+    type: 世界观
+    path: 世界书/世界观/升华者与阶位.yaml
+  - name: 圣痕与谱系
+    type: 世界观
+    path: 世界书/世界观/圣痕与谱系.yaml
+  - name: 天问之路
+    type: 世界观
+    path: 世界书/世界观/天问之路.yaml
+  - name: 灵魂能力
+    type: 世界观
+    path: 世界书/世界观/灵魂能力.yaml
+  - name: 命运之书
+    type: 世界观
+    path: 世界书/世界观/命运之书.yaml
+  - name: 源质武装
+    type: 世界观
+    path: 世界书/世界观/源质武装.yaml
+  - name: 学者与炼金术
+    type: 世界观
+    path: 世界书/世界观/学者与炼金术.yaml
+  - name: 大群之主与军团
+    type: 世界观
+    path: 世界书/世界观/大群之主与军团.yaml
+  - name: 凝固者与侵蚀体
+    type: 世界观
+    path: 世界书/世界观/凝固者与侵蚀体.yaml
+  - name: 边境遗物与神迹刻印
+    type: 世界观
+    path: 世界书/世界观/边境遗物与神迹刻印.yaml
+  - name: 毁灭要素
+    type: 世界观
+    path: 世界书/世界观/毁灭要素.yaml
+  - name: 诸神黄昏
+    type: 世界观
+    path: 世界书/世界观/历史事件/诸神黄昏.yaml
+  - name: 灭世循环
+    type: 世界观
+    path: 世界书/世界观/历史事件/灭世循环.yaml
+  - name: 天国陨落
+    type: 世界观
+    path: 世界书/世界观/历史事件/天国陨落.yaml
+  - name: 魔女之夜
+    type: 世界观
+    path: 世界书/世界观/历史事件/魔女之夜.yaml
+  - name: 费尔巴哈与再生计划
+    type: 世界观
+    path: 世界书/世界观/历史事件/费尔巴哈与再生计划.yaml
+  - name: 诸界之战
+    type: 世界观
+    path: 世界书/世界观/历史事件/诸界之战.yaml
+  - name: 老塘镇封锁
+    type: 世界观
+    path: 世界书/世界观/战役/老塘镇封锁.yaml
+  - name: 东海大战与至福乐土突击
+    type: 世界观
+    path: 世界书/世界观/战役/东海大战与至福乐土突击.yaml
+  - name: 群星号大决战
+    type: 世界观
+    path: 世界书/世界观/战役/群星号大决战.yaml
+  - name: 雷鸣白原大爆炸
+    type: 世界观
+    path: 世界书/世界观/战役/雷鸣白原大爆炸.yaml
+  - name: 波旬收容作战与东君斩天梯
+    type: 世界观
+    path: 世界书/世界观/战役/波旬收容作战与东君斩天梯.yaml
+  # ── 时间线（before_char）──
+  - name: 宏观时间线
+    type: 时间线
+    part: history
+    path: 世界书/时间线/宏观时间线.yaml
+  - name: 剧情索引
+    type: 时间线
+    part: plot
+    path: 世界书/时间线/剧情索引.yaml
+  # ── 地理（before_char）──
+  - name: 新海市
+    type: 地理
+    part: region
+    path: 世界书/地理/新海市.yaml
+  - name: 石髓馆
+    type: 地理
+    part: region
+    path: 世界书/地理/石髓馆.yaml
+  - name: 魔都
+    type: 地理
+    part: region
+    path: 世界书/地理/魔都.yaml
+  - name: 邪马台与第三新汴梁市
+    type: 地理
+    part: region
+    path: 世界书/地理/邪马台与第三新汴梁市.yaml
+  - name: 丹波内圈
+    type: 地理
+    part: region
+    path: 世界书/地理/丹波内圈.yaml
+  - name: 边境与无尽之海
+    type: 地理
+    part: region
+    path: 世界书/地理/边境与无尽之海.yaml
+  - name: 黄昏之乡
+    type: 地理
+    part: region
+    path: 世界书/地理/黄昏之乡.yaml
+  - name: 赫利俄斯
+    type: 地理
+    part: region
+    path: 世界书/地理/赫利俄斯.yaml
+  - name: 至福乐土与雷霆之海
+    type: 地理
+    part: region
+    path: 世界书/地理/至福乐土与雷霆之海.yaml
+  - name: 南极与万象天球
+    type: 地理
+    part: region
+    path: 世界书/地理/南极与万象天球.yaml
+  - name: 天文会
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/天文会.yaml
+  - name: 统辖局
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/统辖局.yaml
+  - name: 存续院
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/存续院.yaml
+  - name: 理想国
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/理想国.yaml
+  - name: 象牙之塔
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/象牙之塔.yaml
+  - name: 特事处与社保局
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/特事处与社保局.yaml
+  - name: 绿日
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/绿日.yaml
+  - name: 归净之民
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/归净之民.yaml
+  - name: 黄金黎明
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/黄金黎明.yaml
+  - name: 常青藤联盟
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/常青藤联盟.yaml
+  - name: 铁晶座
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/铁晶座.yaml
+  - name: 小猫乐园
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/小猫乐园.yaml
+  - name: 石釜学会
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/石釜学会.yaml
+  - name: 三贤人
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/三贤人.yaml
+  - name: 先导会
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/先导会.yaml
+  - name: 鹿鸣馆
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/鹿鸣馆.yaml
+  - name: 万孽之集
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/万孽之集.yaml
+  - name: 无归者之墓
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/无归者之墓.yaml
+  - name: 良宵会
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/良宵会.yaml
+  - name: 地狱音乐协会与明日新闻
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/地狱音乐协会与明日新闻.yaml
+  - name: 昨日快递与卡文迪许工坊
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/昨日快递与卡文迪许工坊.yaml
+  - name: 势力行动表
+    type: 地理
+    part: faction
+    path: 世界书/地理/势力/势力行动表.yaml
+    purpose: 11 个势力行动卡（目标/行动循环/默认路径），selective 键=主要势力名；沙盒"世界运转"核心
+  # ── 事件（depth，selective 候选事件库）──
+  - name: 段00-序：最后的晚餐
+    type: 事件
+    path: 世界书/事件/段条目/段00-序.md
+  - name: 段01-新海市：命运之书觉醒与乌鸦
+    type: 事件
+    path: 世界书/事件/段条目/段01-新海市.md
+  - name: 段02-救主会与绿日
+    type: 事件
+    path: 世界书/事件/段条目/段02-救主会与绿日.md
+  - name: 段03-入职天文会：KP暗网游戏与莉莉
+    type: 事件
+    path: 世界书/事件/段条目/段03-入职天文会.md
+  - name: 段04-厨魔大赛与山鬼进阶
+    type: 事件
+    path: 世界书/事件/段条目/段04-厨魔大赛与山鬼进阶.md
+  - name: 段05-亚洲新秀赛与邪马台
+    type: 事件
+    path: 世界书/事件/段条目/段05-亚洲新秀赛与邪马台.md
+  - name: 段06-魔女之夜
+    type: 事件
+    path: 世界书/事件/段条目/段06-魔女之夜.md
+  - name: 段07-回归现境：星辰号、群星号与良宵会
+    type: 事件
+    path: 世界书/事件/段条目/段07-回归现境.md
+  - name: 段08-现境旅行与地象天球：少司命进阶
+    type: 事件
+    path: 世界书/事件/段条目/段08-现境旅行与地象天球.md
+  - name: 段09-象牙之塔
+    type: 事件
+    path: 世界书/事件/段条目/段09-象牙之塔.md
+  - name: 段10-黄昏之乡：永冻炉心与铸造者
+    type: 事件
+    path: 世界书/事件/段条目/段10-黄昏之乡.md
+  - name: 段11-瀛洲里见家：怀纸素子与八房
+    type: 事件
+    path: 世界书/事件/段条目/段11-瀛洲里见家.md
+  - name: 段12-丹波内圈：总无事令与大司命
+    type: 事件
+    path: 世界书/事件/段条目/段12-丹波内圈.md
+  - name: 段13-刀狩与剑圣托孤
+    type: 事件
+    path: 世界书/事件/段条目/段13-刀狩与剑圣托孤.md
+  - name: 段14-赫利俄斯：神前对决与巴德尔
+    type: 事件
+    path: 世界书/事件/段条目/段14-赫利俄斯.md
+  - name: 段15-天国谱系重建
+    type: 事件
+    path: 世界书/事件/段条目/段15-天国谱系重建.md
+  - name: 段16-地狱哨站与诸界之战爆发
+    type: 事件
+    path: 世界书/事件/段条目/段16-地狱哨站与诸界之战爆发.md
+  - name: 段17-深渊之赌：存续院豪赌与东君斩天梯
+    type: 事件
+    path: 世界书/事件/段条目/段17-深渊之赌.md
+  - name: 段18-深渊之赌收官：升座、盖亚复活与太一降临
+    type: 事件
+    path: 世界书/事件/段条目/段18-深渊之赌收官.md
+  - name: 段19-福音圣座与万世乐土：巴哈姆特诞生
+    type: 事件
+    path: 世界书/事件/段条目/段19-福音圣座与万世乐土.md
+  - name: 段20-原罪军团与诸界之战开战
+    type: 事件
+    path: 世界书/事件/段条目/段20-原罪军团与诸界之战开战.md
+  - name: 段21-深渊烈日：渗透深渊与黄金黎明覆灭
+    type: 事件
+    path: 世界书/事件/段条目/段21-深渊烈日与黄金黎明覆灭.md
+  - name: 段22-再生计划：伦敦沙盒与所罗门之死
+    type: 事件
+    path: 世界书/事件/段条目/段22-再生计划伦敦沙盒.md
+  - name: 段23-诸界之战决胜：牧潮之战、北极星与焚窟主
+    type: 事件
+    path: 世界书/事件/段条目/段23-诸界之战决胜.md
+  - name: 段24-东君进阶与黄金黎明全灭
+    type: 事件
+    path: 世界书/事件/段条目/段24-东君进阶与黄金黎明全灭.md
+  - name: 段25-吹笛人之死、深渊烈日与现境之太阳
+    type: 事件
+    path: 世界书/事件/段条目/段25-吹笛人之死与现境之太阳.md
+  - name: 段26-迦南收编、天国计划与终局：海钓、大君、亡国
+    type: 事件
+    path: 世界书/事件/段条目/段26-迦南收编天国计划与终局.md
+  - name: 段27-尾声·新世：七条时间线
+    type: 事件
+    path: 世界书/事件/段条目/段27-尾声新世.md
+  # 地点事件库（43 条）：首批 2 条已列，其余 41 条 name/path 以 剧情/05c_地点事件库.md 清单表为准
+  # （新海系/丹波系/边境系/地狱系 20 地点；创作时按表逐条展开注册，断点续接以 05c 清单为准）
+  - name: 夜船卸货
+    type: 事件
+    path: 世界书/事件/地点事件/夜船卸货.yaml
+  - name: 地窖诵经声
+    type: 事件
+    path: 世界书/事件/地点事件/地窖诵经声.yaml
+  # ── 角色（after_char）──
+  - name: 人物总览
+    type: 角色
+    path: 世界书/角色/人物总览.yaml
+    scope: catalog
+    purpose: 常驻索引（树状目录，恒 constant 注入）；命名对照（乌鸦=彤姬、丽兹=丽兹赫特莫克 等）
+  - name: 槐诗
+    type: 角色
+    path: 世界书/角色/槐诗.yaml
+  - name: 彤姬
+    type: 角色
+    path: 世界书/角色/彤姬.yaml
+  - name: 艾晴
+    type: 角色
+    path: 世界书/角色/艾晴.yaml
+  - name: 柳东黎
+    type: 角色
+    path: 世界书/角色/柳东黎.yaml
+  - name: 罗娴
+    type: 角色
+    path: 世界书/角色/罗娴.yaml
+  - name: 莉莉
+    type: 角色
+    path: 世界书/角色/莉莉.yaml
+  - name: 傅依
+    type: 角色
+    path: 世界书/角色/傅依.yaml
+  - name: 白帝子
+    type: 角色
+    path: 世界书/角色/白帝子.yaml
+  - name: 罗素
+    type: 角色
+    path: 世界书/角色/罗素.yaml
+  - name: 罗老
+    type: 角色
+    path: 世界书/角色/罗老.yaml
+  - name: 房叔
+    type: 角色
+    path: 世界书/角色/房叔.yaml
+  # ── NPC（after_char）──
+  - name: 老杨
+    type: NPC
+    path: 世界书/NPC/老杨.yaml
+  - name: 王海
+    type: NPC
+    path: 世界书/NPC/王海.yaml
+  - name: 凶猿
+    type: NPC
+    path: 世界书/NPC/凶猿.yaml
+  - name: 红手套
+    type: NPC
+    path: 世界书/NPC/红手套.yaml
+  - name: 戚问
+    type: NPC
+    path: 世界书/NPC/戚问.yaml
+  - name: 戚元
+    type: NPC
+    path: 世界书/NPC/戚元.yaml
+  - name: 何洛
+    type: NPC
+    path: 世界书/NPC/何洛.yaml
+  - name: 老肖
+    type: NPC
+    path: 世界书/NPC/老肖.yaml
+  - name: 玄鸟
+    type: NPC
+    path: 世界书/NPC/玄鸟.yaml
+  - name: 叶雪涯
+    type: NPC
+    path: 世界书/NPC/叶雪涯.yaml
+  - name: 符残光
+    type: NPC
+    path: 世界书/NPC/符残光.yaml
+  - name: 原照
+    type: NPC
+    path: 世界书/NPC/原照.yaml
+  - name: 原缘
+    type: NPC
+    path: 世界书/NPC/原缘.yaml
+  - name: 林十九
+    type: NPC
+    path: 世界书/NPC/林十九.yaml
+  - name: 郭守缺
+    type: NPC
+    path: 世界书/NPC/郭守缺.yaml
+  - name: 里见琥珀
+    type: NPC
+    path: 世界书/NPC/里见琥珀.yaml
+  - name: 里见真希
+    type: NPC
+    path: 世界书/NPC/里见真希.yaml
+  - name: 剑圣上泉
+    type: NPC
+    path: 世界书/NPC/剑圣上泉.yaml
+  - name: 佐佐木清正
+    type: NPC
+    path: 世界书/NPC/佐佐木清正.yaml
+  - name: 赫笛
+    type: NPC
+    path: 世界书/NPC/赫笛.yaml
+  - name: 小猫
+    type: NPC
+    path: 世界书/NPC/小猫.yaml
+  - name: 别西卜
+    type: NPC
+    path: 世界书/NPC/别西卜.yaml
+  - name: 灰衣人
+    type: NPC
+    path: 世界书/NPC/灰衣人.yaml
+  - name: 神城未来
+    type: NPC
+    path: 世界书/NPC/神城未来.yaml
+  - name: 宫本弦一郎
+    type: NPC
+    path: 世界书/NPC/宫本弦一郎.yaml
+  - name: 马库斯
+    type: NPC
+    path: 世界书/NPC/马库斯.yaml
+  - name: 应芳州
+    type: NPC
+    path: 世界书/NPC/应芳州.yaml
+  - name: 陈女士
+    type: NPC
+    path: 世界书/NPC/陈女士.yaml
+  - name: 雷蒙德
+    type: NPC
+    path: 世界书/NPC/雷蒙德.yaml
+  - name: 浮士德
+    type: NPC
+    path: 世界书/NPC/浮士德.yaml
+  # ── MVU（depth）──
+  - name: 变量列表
+    type: MVU
+    path: 世界书/变量/变量列表.yaml
+  - name: 变量更新规则
+    type: MVU
+    path: 世界书/变量/变量更新规则.yaml
+  - name: 变量输出格式
+    type: MVU
+    path: 世界书/变量/变量输出格式.yaml
+  - name: initvar
+    type: MVU
+    path: 世界书/变量/initvar.yaml
+
+mvu:
+  structure: |
+    顶层结构（参考卡2 架构 + 本卡功能）：
+    ├── 当前时间
+    │   ├── 日期 / 时刻
+    ├── 当前地点
+    │   ├── 名称 / 区域 / 环境
+    ├── 当前事件
+    │   ├── 名称 / 阶段 / 场景物品
+    ├── 战斗状态
+    │   ├── 是否战斗中 / 当前回合 / 参战角色 / 行动顺序 / 当前行动者 / 行动额度 / 上次检定
+    ├── 玩家档案
+    │   ├── 基础（姓名{{user}}/性别/年龄/当前身份/当前势力/种族/谱系）
+    │   ├── 战力（基础阶位/当前阶位/爆发态/极限态）——阶位+上下位
+    │   ├── 圣痕与灵魂能力（效果/发动负荷/使用条件/特殊限制/破阶标签）
+    │   ├── 装备（当前武器：基础伤害/命中修正/破阶标签/有效距离/状态）
+    │   ├── 状态（当前形态/当前状态/伤势/濒死/生死状态/掩体状态）——参考卡2 C 档战斗
+    │   └── 成长（下一目标/里程碑条件[掌握·实战·代价或稳定性]/已完成里程碑[达成目标/完成于事件/时间/前后阶位]）——晋升方式+命运之门追踪
+    ├── 物品栏
+    ├── NPC档案
+    │   ├── 角色表（key=规范名，字段含 别名[]/在场: true|false/当前位置/当前行动/与主角关系/好感度/与主角距离/当前情绪）
+    │   │   └── 在场=true 全字段；在场=false 精简骨架（位置/行动/一句话）
+    └── 系统
+        ├── 已完成事件（追加式：hm01,hm02，只增不删）
+        ├── 随机事件（开关 on/off / 冷却 / 上次方向）
+        └── 当前目标（探险单槽位）
+  variables:                # 待细化：取值范围与格式约束待 schema-agent 阶段补充
+    - path: 当前时间.日期
+      format: YYYY/MM/DD
+      description: 沙盒世界时钟
+    - path: 当前时间.时刻
+      description: 时段
+    - path: 当前地点.名称
+      description: 玩家当前所在区域/地点
+    - path: 当前事件.名称
+      description: 进行中的事件
+    - path: 战斗状态.是否战斗中
+      type: boolean
+      description: 战斗状态（C 档 d20 战斗系统，含回合/行动额度/上次检定）
+    - path: 玩家档案.战力
+      type: object
+      fields:
+        基础阶位: string
+        当前阶位: string
+        爆发态: object
+        极限态: object
+      description: 阶位（不入阶/一至十九阶·上下位），参考卡2 档值换算
+    - path: 玩家档案.圣痕与灵魂能力
+      type: z.record
+      description: 技能表（只增不删；字段：效果/发动负荷/使用条件/特殊限制/破阶标签）
+    - path: 玩家档案.成长
+      type: object
+      fields:
+        下一目标: string
+        里程碑条件: z.array
+        已完成里程碑: z.array
+      description: 晋升追踪（晋升方式+命运之门）：条件类型 掌握/实战/代价或稳定性；完成记录带事件与前后阶位
+    - path: 玩家档案.当前武器
+      type: object
+      description: 主武器（基础伤害/命中修正/破阶标签/有效距离/状态）
+    - path: NPC档案.角色表
+      type: z.record
+      description: key=规范名（别名存字段防分家）；在场 true/false 布尔；在场全字段/离场骨架
+    - path: 系统.已完成事件
+      type: z.array
+      description: 已完成事件标记（只增不删，参考卡2 数组+上限+remove 最旧）；位标记 ID 如 hm01
+    - path: 系统.随机事件开关
+      enum: [on, off]
+      description: 全局开关
+    - path: 系统.随机事件冷却
+      type: number
+      description: 冷却计数（轮）
+    - path: 系统.上次方向
+      enum: [日常, 战斗, 探险, null]
+      description: 方向轮换
+    - path: 系统.当前目标
+      type: string
+      description: 探险目标单槽位（可选）
+
+first_messages:
+  - format: 叙事式
+    word_count: 300~600
+    output_path: 开场白/0.txt
+    scene: 2110年·新海市·命运之书觉醒前夜
+    opening_situation: |
+      玩家以自定义角色进入新海市（默认前夜：槐诗还没捡盒）。
+      叙事式开场建立场景与氛围，给出"三选一引线"（如码头怪象/深夜琴声/小巷传闻三个可接可不接的钩子），
+      结尾以"入世卷"五步建卡引导收束（时间线落点/身份/能力/背景/初始关系），
+      AI 生成【玩家角色档案】后世界开始运转。

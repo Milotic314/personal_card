@@ -1,0 +1,19 @@
+<%_
+const __d20 = () => {
+  if (globalThis.crypto && typeof globalThis.crypto.getRandomValues === 'function') {
+    const range = 0x100000000;
+    const limit = range - (range % 20);
+    const buffer = new Uint32Array(1);
+    do globalThis.crypto.getRandomValues(buffer); while (buffer[0] >= limit);
+    return (buffer[0] % 20) + 1;
+  }
+  return Math.floor(Math.random() * 20) + 1;
+};
+const __d20Pool = Array.from({ length: 12 }, __d20);
+_%>
+<d20_pool>
+本次生成的一次性 d20 骰池：<%= __d20Pool.join('、') %>
+检定时从左到右依次取用；禁止挑选、跳过、重掷或改写。未使用骰面在本次生成结束时作废，骰池耗尽后不得继续发起检定。范围攻击只取一个骰面。
+此标签只提供生成输入，不得复制到正文或写入 stat_data。
+</d20_pool>
+数值与细则见「战斗规则-细则」。
